@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: engineer-ui
+spec:
+  selector:
+    app: engineer-ui
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
