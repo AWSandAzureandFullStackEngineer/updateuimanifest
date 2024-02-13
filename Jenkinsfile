@@ -1,7 +1,8 @@
 pipeline {
     agent any
-        stages {
-          stage('Update GIT') {
+
+    stages {
+        stage('Update GIT') {
               steps {
                   script {
                       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
@@ -16,22 +17,21 @@ pipeline {
                               sh "git add ."
                               sh "git commit -m 'Done by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
                               sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/updateuimanifest.git HEAD:main"
-                            }
                         }
                     }
                 }
             }
-            stage('Remove docker images and containers') {
-                steps {
-                    sh 'docker system prune -a --force'
-                }
-            }
-            stage('Cleanup') {
-                steps {
-                    // Clean up Docker images after build
-                    cleanWs()
-                }
+        }
+        stage('Remove docker images and containers') {
+            steps {
+                sh 'docker system prune -a --force'
             }
         }
+        stage('Cleanup') {
+            steps {
+                // Clean up Docker images after build
+                cleanWs()
+            }
+        }  
     }
 }
