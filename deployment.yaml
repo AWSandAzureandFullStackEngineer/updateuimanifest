@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: engineer-ui
-          image: steven8519/engineer-ui:latest # Replace with your Docker image
+          image: steven8519/engineer-ui:24
           ports:
             - containerPort: 3000
