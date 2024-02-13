@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: engineer-ui
+spec:
+  replicas: 1 # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: engineer-ui
+  template:
+    metadata:
+      labels:
+        app: engineer-ui
+    spec:
+      containers:
+        - name: engineer-ui
+          image: steven8519/engineer-ui:latest # Replace with your Docker image
+          ports:
+            - containerPort: 3000
