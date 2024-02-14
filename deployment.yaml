@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: engineer-ui
-          image: steven8519/engineer-ui:28
+          image: steven8519/engineer-ui:30
           ports:
             - containerPort: 3000
